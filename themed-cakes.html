@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Themed Cakes - The Whisk Craft</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-header {
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+
+    .sub {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 0 0 16px;
+      flex-wrap: wrap;
+    }
+
+    .filters button {
+      border: 1px solid #eee;
+      background: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .filters button.active {
+      background: #111;
+      color: #fff;
+    }
+
+    .grid {
+      max-width: 1040px;
+      margin: 0 auto 40px;
+      padding: 0 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card .content {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .chip {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #fff4f7;
+      color: #c2185b;
+      width: max-content;
+    }
+
+    .price {
+      font-weight: 600;
+    }
+
+    .btns {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      background: #fff;
+    }
+
+    .btn.primary {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>Themed Cakes 🎂</h1>
+    <p class="sub">Choose a theme !! Customization available ..!! </p>
+  </header>
+
+  
+
+  <!-- cards -->
+  <main class="grid" id="cards">
+    <!-- Butterfly -->
+    <article class="card" data-theme="butterfly">
+      <img src="images/butterfly.jpg" alt="Butterfly Theme Cake">
+      <div class="content">
+        <span class="chip">Butterfly</span>
+        <h3>Butterfly Theme Cake 🦋</h3>
+        <p>Soft pastel palette, edible butterflies & delicate piping—dreamy vibes for birthdays.</p>
+        <span class="price"> ₹450</span>
+        <div class="btns">
+        
+          <a class="btn primary" target="_blank"
+            href="https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20a%20Butterfly%20theme%20cake.">
+            Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Makeup -->
+    <article class="card" data-theme="makeup">
+      <img src="images/makeup.jpg" alt="Makeup Theme Cake">
+      <div class="content">
+        <span class="chip">Makeup</span>
+        <h3>Makeup Theme Cake 💄</h3>
+        <p>Lipstick, palettes & pearl details—chic cake for glam lovers & b’days.</p>
+        <span class="price">₹460</span>
+        <div class="btns">
+        
+          <a class="btn primary" target="_blank"
+            href="https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20a%20Makeup%20theme%20cake.">
+            Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Fruit Wedding Beads -->
+    <article class="card" data-theme="fruit-wedding-beads">
+      <img src="images/elegant.jpg" alt="Fruit Wedding Beads Theme Cake">
+      <div class="content">
+        <span class="chip">Fruit • Wedding • Beads</span>
+        <h3>Fruit Wedding Beads Cake 🍓✨</h3>
+        <p>Fresh fruits, elegant beads & glossy drip—perfect for weddings & engagements.</p>
+        <span class="price">₹560</span>
+        <div class="btns">
+        
+          <a class="btn primary" target="_blank"
+            href="https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20a%20Fruit%20Wedding%20Beads%20theme%20cake.">
+            Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    // Simple filter logic
+    const buttons = document.querySelectorAll('.filters button');
+    const cards = document.querySelectorAll('.card');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards.forEach(c => {
+          c.style.display = (f === 'all' || c.dataset.theme === f) ? 'flex' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
