@@ -10,7 +10,15 @@
     --bg:#fff8f3; --card:#ffffff; --text:#222; --muted:#666; --accent:#111;
     --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.08);
   }
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);}
+      body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* full screen center */
+        }
   header{padding:22px 16px;text-align:center;background:#ffe5ea;}
   header h1{margin:0 0 4px}
   header p{margin:0;color:var(--muted)}
@@ -89,14 +97,7 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="field">
-          <label for="egg">Preference</label>
-          <select id="egg">
-            <option>Eggless</option>
-            <option>With Egg</option>
-          </select>
-        </div>
+     
         <div class="field">
           <label for="budget">Approx Budget (₹)</label>
           <input id="budget" type="number" inputmode="numeric" placeholder="e.g., 1200" />
