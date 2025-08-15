@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chocolate Jar Cake</title><link rel="stylesheet" href="style.css"></head><body>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chocolate Jar Cake</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .product-container {
+            padding: 20px;
+        }
+
+        .image-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .image-row img {
+            width: 30%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .image-row img {
+                width: 100%;
+            }
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4a2c2a;
+        }
+
+        .order-btn {
+            background: #d35400;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .order-btn:hover {
+            background: #e67e22;
+        }
+    </style>
+</head>
+
+<body>
     <div class="product-container">
         <h1>Chocolate Jar Cake 🍯</h1>
-        <img src="images/chocolate-jar-cake.jpg" alt="Chocolate Jar Cake">
+
+        <div class="image-row">
+            <img src="images/chocojar.jpg" alt="Chocolate Jar Cake 1">
+            <img src="images/jarlid.jpg" alt="Chocolate Jar Cake 2">
+            <img src="images/openjar.jpg" alt="Chocolate Jar Cake 3">
+        </div>
+
         <p class="price">₹150 / jar</p>
         <p>Layered chocolate cake in a jar — cute and delicious.</p>
-        <button class="order-btn" onclick="window.location.href='https://wa.me/91XXXXXXXXXX?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20a%20Chocolate%20Jar%20Cake.'">Order Now on WhatsApp</button>
+        <button class="order-btn"
+            onclick="window.location.href='https://wa.me/91XXXXXXXXXX?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20a%20Chocolate%20Jar%20Cake.'">Order
+            Now on WhatsApp</button>
     </div>
-</body></html>
+</body>
+
+</html>
