@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chocolate Cookies</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .product-images {
+      display: flex;
+      gap: 10px;
+      /* images ke beech thoda space */
+      justify-content: center;
+      /* center align */
+    }
+
+    .product-images img {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="product-container">
+    <h1>Red Velvet Cookies🍪</h1>
+
+    <!-- Images in one line -->
+    <div class="product-images">
+      <img src="images/redcookie.jpg" alt="Chocolate Cookie 1">
+      <img src="images/redcookie2.jpg" alt="Chocolate Cookie 2">
+    </div>
+
+    <p class="price">₹15 / piece</p>
+    <p>Soft and decadent with a hint of cocoa, topped with creamy white chocolate chips for that perfect red velvet
+      charm.
+    </p>
+
+    <button class="order-btn"
+      onclick="window.location.href='https://wa.me/91XXXXXXXXXX?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20Chocolate%20Cookies.'">
+      Order Now on WhatsApp
+    </button>
+  </div>
+</body>
+
+</html>
