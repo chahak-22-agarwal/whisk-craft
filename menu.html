@@ -1,31 +1,110 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Menu - The Whisk Craft</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Video background container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9; /* maintain proper ratio for clarity */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay text on video */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text visibility */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu-list li {
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+
+        .menu-list button {
+            margin-left: 10px;
+            padding: 5px 15px;
+            border: none;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-list button:hover {
+            background: #e84a4a;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .video-overlay {
+                font-size: 1.2rem;
+            }
+            .menu-list li {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <header><h1>Our Menu</h1></header>
-     <img src="images\menu.png" alt="The Whisk Craft Logo" class="menu1">
+
+    <header>
+        <h1>Our Menu</h1>
+    </header>
+
+    <!-- Video Section -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="videos/The Whisk Craft.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Optional overlay text -->
+       
+    </div>
+
+    <!-- Menu List -->
     <main>
         <ul class="menu-list">
             <li>Cake <button onclick="window.location.href='cakes.html'">View</button></li>
             <li>Cupcake <button onclick="window.location.href='cupcakes.html'">View</button></li>
             <li>Brownie <button onclick="window.location.href='brownies.html'">View</button></li>
             <li>Jar Cake <button onclick="window.location.href='jarcakes.html'">View</button></li>
-         
+            <li>Swiss Rolls <button onclick="window.location.href='swissroll.html'">View</button></li>
             <li>Donuts <button onclick="window.location.href='donuts.html'">View</button></li>
-          
-            <li>Cookies<button onclick="window.location.href='cookie.html'">View</button></li>
-            <li>
-  Customisation
-  <button onclick="window.location.href='custom-order.html'">View</button>
-</li>
-
-
+            <li>Taco Cake <button onclick="window.location.href='tacocake.html'">View</button></li>
+            <li>Cookies <button onclick="window.location.href='cookie.html'">View</button></li>
         </ul>
     </main>
+
 </body>
 </html>
