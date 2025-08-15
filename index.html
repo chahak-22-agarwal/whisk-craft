@@ -6,19 +6,91 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>The Whisk Craft</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Tagline Scroller Style */
+        .tagline-container {
+            background-color: #ffcad4;
+            padding: 8px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        .tagline {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scrollTagline 15s linear infinite;
+            font-size: 18px;
+            color: #8b2e5d;
+            font-weight: bold;
+        }
+
+        @keyframes scrollTagline {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Front page styling */
+        .front-page {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .logo {
+            max-width: 180px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .hero-buttons button {
+            margin: 10px;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #ffcad4;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-buttons button:hover {
+            background-color: #ff9eb5;
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- Moving Tagline -->
+    <div class="tagline-container">
+        <div class="tagline">
+            🎉 On first order get 10% off | 💝 After five orders get something exciting on your next order 🎉
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <div class="front-page">
-        <img src="images\logo.png" alt="The Whisk Craft Logo" class="logo">
+        <img src="images/logo.png" alt="The Whisk Craft Logo" class="logo">
         <h1>Welcome to The Whisk Craft 🍰</h1>
-        <p class="subtitle">Crafted With Cream , Served With Love !! </p>
+        <p class="subtitle">Crafted With Cream , Served With Love !!</p>
         <br>
         <div class="hero-buttons">
             <button onclick="window.location.href='menu.html'">View Menu</button>
             <button onclick="window.location.href='contact.html'">Contact / Orders</button>
         </div>
     </div>
+
 </body>
 
 </html>
