@@ -8,89 +8,242 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Tagline Scroller Style */
-        .tagline-container {
-            background-color: #ffcad4;
-            padding: 8px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            font-family: Arial, sans-serif;
+        /* keep your existing look but ensure button & overlay styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            color: #111;
         }
 
-        .tagline {
-            display: inline-block;
-            padding-left: 100%;
-            animation: scrollTagline 15s linear infinite;
-            font-size: 18px;
-            color: #8b2e5d;
-            font-weight: bold;
-        }
-
-        @keyframes scrollTagline {
-            0% {
-                transform: translateX(0%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Front page styling */
         .front-page {
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 30px;
+            text-align: center;
         }
 
         .logo {
-            max-width: 180px;
+            width: 140px;
+            display: block;
+            margin: 0 auto 14px;
+        }
+
+        h1 {
+            margin: 6px 0;
+            font-size: 2rem;
         }
 
         .subtitle {
-            font-size: 20px;
-            font-weight: 500;
-            color: #444;
+            color: #666;
+            margin: 6px 0 18px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            margin-top: 8px;
+            flex-wrap: wrap;
         }
 
         .hero-buttons button {
-            margin: 10px;
-            padding: 12px 20px;
-            font-size: 16px;
-            background-color: #ffcad4;
-            border: none;
-            cursor: pointer;
+            background: #ffefef;
+            color: #111;
+            border: 2px solid #ffe5e5;
+            padding: 10px 16px;
             border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform .12s ease, box-shadow .12s ease;
         }
 
         .hero-buttons button:hover {
-            background-color: #ff9eb5;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* STRANGER THINGS ENTRY BUTTON (styled but still fits your page) */
+        .st-btn {
+            background: #111;
+            /* dark base to hint transition */
+            color: #ff1b1b;
+            /* Stranger red */
+            border: 2px solid rgba(255, 27, 27, 0.9);
+            padding: 10px 18px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: box-shadow .18s ease, transform .12s ease;
+        }
+
+        .st-btn:hover {
+            box-shadow: 0 8px 30px rgba(255, 27, 27, 0.18);
+            transform: translateY(-3px);
+        }
+
+        /* TRANSITION OVERLAY */
+        #transition-screen {
+            position: fixed;
+            inset: 0;
+            display: none;
+            /* shown when user clicks */
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            z-index: 9999;
+            pointer-events: auto;
+            flex-direction: column;
+        }
+
+        /* RED TEXT - large and glowing */
+        #transition-text {
+            font-family: 'Creepster', cursive;
+            color: #ff1b1b;
+            font-size: 2.2rem;
+            text-shadow: 0 0 18px rgba(255, 27, 27, 0.95), 0 0 50px rgba(255, 27, 27, 0.12);
+            transform: translateY(-8px) scale(0.98);
+            opacity: 0;
+            animation: transAppear .9s ease forwards;
+        }
+
+        @keyframes transAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.98);
+                filter: blur(2px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(0) scale(1.02);
+                filter: blur(0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* optional subtle static bar under text */
+        .static-bar {
+            width: 70%;
+            height: 6px;
+            margin-top: 18px;
+            background: linear-gradient(90deg, rgba(255, 27, 27, 0.35), rgba(255, 27, 27, 0.9), rgba(255, 27, 27, 0.35));
+            box-shadow: 0 0 20px rgba(255, 27, 27, 0.1);
+            border-radius: 6px;
+            opacity: 0.9;
+            transform: scaleX(0.8);
+            animation: barPulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes barPulse {
+            0% {
+                transform: scaleX(0.8);
+                opacity: 0.6
+            }
+
+            50% {
+                transform: scaleX(1);
+                opacity: 1
+            }
+
+            100% {
+                transform: scaleX(0.8);
+                opacity: 0.6
+            }
+        }
+
+        /* small helper for accessibility / cancel (optional) */
+        .cancel-note {
+            margin-top: 18px;
+            color: #ccc;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* responsive */
+        @media (max-width:520px) {
+            #transition-text {
+                font-size: 1.6rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Moving Tagline -->
-    <div class="tagline-container">
-        <div class="tagline">
-            🎉 On first order get 10% off | 💝 After five orders get something exciting on your next order 🎉
-        </div>
-    </div>
-
-    <!-- Main Content -->
     <div class="front-page">
         <img src="images/logo.png" alt="The Whisk Craft Logo" class="logo">
         <h1>Welcome to The Whisk Craft 🍰</h1>
-        <p class="subtitle">Crafted With Cream , Served With Love !!</p>
-        <br>
+        <p class="subtitle">Crafted With Cream , Served With Love !! </p>
+
         <div class="hero-buttons">
             <button onclick="window.location.href='menu.html'">View Menu</button>
             <button onclick="window.location.href='contact.html'">Contact / Orders</button>
+
+            <!-- Stranger Things Mode button -->
+            <button class="st-btn" id="enter-st">Enter the Upside Down</button>
         </div>
     </div>
 
+    <!-- TRANSITION SCREEN (hidden until clicked) -->
+    <div id="transition-screen" role="dialog" aria-hidden="true" aria-label="Entering the Upside Down">
+        <div id="transition-text">Entering the Upside Down…</div>
+        <div class="static-bar" aria-hidden="true"></div>
+        <div class="cancel-note" style="display:none;">Tap again to cancel</div>
+    </div>
+
+    <script>
+        // When the ST button is clicked, show overlay, animate, then redirect.
+        const stBtn = document.getElementById('enter-st');
+        const overlay = document.getElementById('transition-screen');
+
+        stBtn.addEventListener('click', () => {
+            // show overlay
+            overlay.style.display = 'flex';
+            overlay.setAttribute('aria-hidden', 'false');
+
+            // small flash effect (optional)
+            document.body.style.transition = 'filter 0.25s ease';
+            document.body.style.filter = 'brightness(0.35)';
+
+            // time before redirect (1200ms = cinematic)
+            setTimeout(() => {
+                window.location.href = 'stranger_things.html'; // change if your file name is different
+            }, 1200);
+        });
+
+        // Optional: allow pressing escape to cancel (if too fast)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.style.display === 'flex') {
+                overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.filter = '';
+            }
+        });
+
+        // On touch devices, also allow tap outside to cancel
+        overlay.addEventListener('click', (ev) => {
+            // if user taps the overlay background (not the text), cancel
+            if (ev.target === overlay) {
+                overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.filter = '';
+            }
+        });
+    </script>
 </body>
 
 </html>
