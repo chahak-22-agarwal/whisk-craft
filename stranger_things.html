@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Stranger Things – Whisk Craft</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------------- GLOBAL THEME ---------------- */
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+
+      /* UPSIDE DOWN BLUE-PURPLE BACKGROUND */
+      background: linear-gradient(to bottom, #080c16, #0b1020, #10172a);
+      background-attachment: fixed;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Red glow mist bottom */
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.15), transparent);
+      pointer-events: none;
+    }
+
+    /* ---------------- EPISODE INTRO ---------------- */
+
+    #intro-text {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Creepster';
+      font-size: 2.2rem;
+      color: #ff1b1b;
+      opacity: 0;
+      animation: fadeIntro 4s ease forwards;
+    }
+
+    @keyframes fadeIntro {
+      0% {
+        opacity: 0;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.3;
+      }
+    }
+
+    /* ---------------- HEADER ---------------- */
+
+    .header {
+      height: 500px;
+      width: 100%;
+      background: url('images/stranger.jpg') center top/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px red;
+      position: relative;
+    }
+
+    /* ---------------- SECTION TITLES ---------------- */
+
+    .section-title {
+      font-family: 'Creepster', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-top: 50px;
+      color: #ff1b1b;
+      text-shadow: 0 0 15px red;
+    }
+
+    /* ---------------- CHARACTER CARDS ---------------- */
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 30px;
+      scrollbar-width: none;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .character-card {
+      min-width: 280px;
+      background: #0c0f17;
+      border: 2px solid #ff1b1b;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 0 18px red;
+      transition: .3s;
+    }
+
+    .character-card:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 26px #ff3b3b;
+    }
+
+    .character-card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .character-name {
+      font-family: 'Creepster';
+      font-size: 2rem;
+      margin-top: 12px;
+      color: #ff1b1b;
+    }
+
+    .character-desc {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* ---------------- PRODUCT CARDS ---------------- */
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px;
+    }
+
+    .product-card {
+      background: #151926;
+      border: 1px solid red;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 12px red;
+      transition: .3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 22px red;
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .price {
+      color: #ff3b3b;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: red;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #ff5555;
+    }
+
+    /* ---- COOKIE PACK BUILDER WITH PRICE + BUTTON ---- */
+    .pack-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .pack-card {
+      background: #151926;
+      border: 2px solid red;
+      border-radius: 14px;
+      padding: 15px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 20px red;
+      transition: 0.3s;
+    }
+
+    .pack-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #ff2d2d;
+    }
+
+    .pack-img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .pack-price {
+      margin-top: 10px;
+      font-size: 1.3rem;
+      color: #ff3b3b;
+      text-shadow: 0 0 10px red;
+    }
+
+    .order-btn {
+      display: inline-block;
+      background: red;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: 'Poppins';
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 10px;
+      box-shadow: 0 0 15px red;
+      transition: 0.3s;
+    }
+
+    .order-btn:hover {
+      background: #ff4d4d;
+      box-shadow: 0 0 25px #ff2d2d;
+    }
+
+
+    /* ---------------- UPSIDE DOWN FOOTER ---------------- */
+
+    .footer {
+      background: #ff1b1b;
+      color: black;
+      text-align: center;
+      padding: 25px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    /* ---------------- PARTICLES ---------------- */
+
+    .particle {
+      position: fixed;
+      top: -10px;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    /* ---- IMAGE ZOOM OVERLAY ---- */
+    #img-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #img-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 40px red;
+      animation: zoomIn .3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    #overlay-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      text-shadow: 0 0 10px red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="img-overlay">
+    <span id="overlay-close">&times;</span>
+    <img id="overlay-img" src="">
+  </div>
+
+  <!-- INTRO TEXT -->
+  <div id="intro-text">Previously… in the Upside Down</div>
+
+  <audio id="bg-music" autoplay loop muted>
+    <source src="audio/stranger.mp3" type="audio/mp3">
+  </audio>
+
+
+
+  <!-- HEADER -->
+  <div class="header"></div>
+
+  <!-- CHARACTER SECTION -->
+  <div class="section-title">Meet the Hawkins Squad</div>
+
+  <div class="carousel">
+    <div class="character-card">
+      <img src="images/11.jpg">
+      <div class="character-name">Eleven</div>
+      <div class="character-desc">Telekinesis • Psychic Link • Mind Control.</div>
+    </div>
+
+    <div class="character-card">
+      <img src="images/mike.jpg">
+      <div class="character-name">Mike Wheeler</div>
+      <div class="character-desc">Brave Leader • Loyal • Strategic.</div>
+    </div>
+
+    <div class="character-card">
+      <img src="images/dustin.jpg">
+      <div class="character-name">Dustin Henderson</div>
+      <div class="character-desc">Genius Inventor • Comic Relief • Heart of Group.</div>
+    </div>
+
+    <div class="character-card">
+      <img src="images/lucas.jpg">
+      <div class="character-name">Lucas Sinclair</div>
+      <div class="character-desc">Sharpshooter • Fighter • Tactical Mind.</div>
+    </div>
+
+    <div class="character-card">
+      <img src="images/will.jpg">
+      <div class="character-name">Will Byers</div>
+      <div class="character-desc">Psychic Sense • Connected to Upside Down.</div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS SECTION -->
+  <div class="section-title">Stranger Things Cookies</div>
+
+  <div class="products-grid">
+
+    <div class="product-card">
+      <img src="images/eleven.jpeg">
+      <p>Eleven Waffle Cookie</p>
+      <p class="price">₹100</p>
+      <button class="btn"
+        onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20the%20Eleven%20Waffle%20Cookie%20(₹100).';">
+        Order on WhatsApp
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/mikec.jpeg">
+      <p>Mike Cookie</p>
+      <p class="price">₹50</p>
+      <button class="btn"
+        onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20the%20Mike%20Cookie%20(₹50).';">
+        Order on WhatsApp
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/dustinc.jpeg">
+      <p>Dustin Smile Cookie</p>
+      <p class="price">₹50</p>
+      <button class="btn"
+        onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20the%20Dustin%20Smile%20Cookie%20(₹50).';">
+        Order on WhatsApp
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/lucasc.jpeg">
+      <p>Lucas Cookie</p>
+      <p class="price">₹50</p>
+      <button class="btn"
+        onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20the%20Lucas%20Cookie%20(₹50).';">
+        Order on WhatsApp
+      </button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/willc.jpeg">
+      <p>Will Lights Cookie</p>
+      <p class="price">₹50</p>
+      <button class="btn"
+        onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20the%20Will%20Lights%20Cookie%20(₹50).';">
+        Order on WhatsApp
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- COOKIE PACK BUILDER -->
+  <div id="pack-section">
+    <div class="section-title">Your Cookie Pack</div>
+
+    <div class="pack-container">
+
+      <!-- PACK 1 -->
+      <div class="pack-card">
+        <img class="pack-img" src="images/pack1.jpg" alt="Cookie Pack 1">
+        <div class="pack-price">₹200</div>
+
+        <button class="order-btn"
+          onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20Cookie%20Pack%201%20(₹200).';">
+          Order on WhatsApp
+        </button>
+      </div>
+
+
+      <!-- PACK 2 -->
+      <div class="pack-card">
+        <img class="pack-img" src="images/pack2.jpg" alt="Cookie Pack 2">
+        <div class="pack-price">₹300</div>
+
+        <button class="order-btn"
+          onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20Cookie%20Pack%202%20(₹300).';">
+          Order on WhatsApp
+        </button>
+      </div>
+
+      <div class="pack-card">
+        <img class="pack-img" src="images/pack3.jpg" alt="Cookie Pack 3">
+        <div class="pack-price">₹250</div>
+
+        <button class="order-btn"
+          onclick="window.location.href='https://wa.me/919145866289?text=Hi%20The%20Whisk%20Craft%2C%20I%20want%20to%20order%20Cookie%20Pack%203%20(₹250).';">
+          Order on WhatsApp
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Enter the Upside Down • Whisk Craft © 2025
+  </div>
+
+  <script>
+    /* ----------- PARTICLE GENERATOR (SNOW) ----------- */
+    for (let i = 0; i < 50; i++) {
+      let p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.animationDuration = (2 + Math.random() * 4) + "s";
+      document.body.appendChild(p);
+    }
+
+
+  </script>
+  <script>
+    const music = document.getElementById("bg-music");
+    music.volume = 0.10;
+
+    function enableSound() {
+      music.muted = false;
+      music.play();
+
+      // remove listeners once sound is enabled
+      document.removeEventListener("click", enableSound);
+      document.removeEventListener("touchstart", enableSound);
+    }
+
+    document.addEventListener("click", enableSound);
+    document.addEventListener("touchstart", enableSound);
+  </script>
+
+  <script>
+    // Zoom Image Overlay
+    const overlay = document.getElementById("img-overlay");
+    const overlayImg = document.getElementById("overlay-img");
+    const closeBtn = document.getElementById("overlay-close");
+
+    // When any product image is clicked → Show overlay
+    document.querySelectorAll(".product-card img").forEach(img => {
+      img.addEventListener("click", () => {
+        overlay.style.display = "flex";
+        overlayImg.src = img.src;
+      });
+    });
+
+    // Close overlay
+    closeBtn.addEventListener("click", () => {
+      overlay.style.display = "none";
+    });
+
+    // Close on background click
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) overlay.style.display = "none";
+    });
+  </script>
+
+</body>
+
+</html>
